@@ -1,15 +1,16 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
 
 	public static void main(String[] args) {
-		
+		matrixParse.parseMatrices(readFile("src/matrix"));
 		
 	}
 	
-	private String readFile(String fname) {
+	private static String readFile(String fname) {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(fname));
@@ -18,7 +19,7 @@ public class Main {
 			System.exit(-1);
 			//
 		}
-		 String everything;
+		 String everything = null;
 		try {
 		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
@@ -33,21 +34,19 @@ public class Main {
 			System.out.println("something went wrong");
 			e.printStackTrace();
 		} finally {
-		    br.close();
+		    try {
+				br.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return everything;
 	}
 
-	private int[][] parseMatrix(String matrix) {
-		int[][] matrix;
-		
-		
-		return null;
-		
-	} 
 	
-	private int[][] parseVectors(String vectors) {
-		int[][] matrix;
+	private int[][] parseVectors(String vectorString) {
+		int[][] vectors;
 		
 		
 		return null;
